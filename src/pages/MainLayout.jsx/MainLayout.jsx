@@ -1,10 +1,9 @@
-import Loader from '../Loader/Loader';
-import Form from '../Form/Form';
-import List from '../List/List';
-import Filter from '../Filter/Filter';
+import Loader from '../../components/Loader/Loader';
+import Form from '../../components/Form/Form';
+import List from '../../components/List/List';
+import Filter from '../../components/Filter/Filter';
 import { SimpleGrid, Text, Title } from '@mantine/core';
 import PhonebookWrapper from './MainLayout.styled';
-import {UserMenu} from 'components/UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/selectors';
 const MainLayout = () => {
@@ -13,7 +12,6 @@ const MainLayout = () => {
     const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
     return (
          <PhonebookWrapper>
-        <UserMenu />
         <SimpleGrid cols={1} spacing="md">
           {isLoading && <Loader />}
           <Title fw={900} fz={62}>Phonebook</Title>

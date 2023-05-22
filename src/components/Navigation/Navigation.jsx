@@ -9,6 +9,7 @@ export const Navigation = () => {
   return (
     <Navbar
       sx={{
+        height: '100px',
         paddingTop: '12px',
         paddingBottom: '12px',
         flexDirection: 'row',
