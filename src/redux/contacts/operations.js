@@ -5,7 +5,6 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, thunkAPI) => {
     try {
-      console.log('123');
       const response = await backend.get('/contacts');
       return response.data;
     } catch (e) {
@@ -17,7 +16,6 @@ export const fetchContacts = createAsyncThunk(
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (form, thunkAPI) => {
-    console.log('FORM', form);
     try {
       const response = await backend.post('/contacts', { ...form });
       return response.data;

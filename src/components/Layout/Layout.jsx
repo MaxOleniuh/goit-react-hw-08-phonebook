@@ -3,10 +3,10 @@ import { Toaster } from 'react-hot-toast';
 import { AppBar } from '../AppBar/AppBar';
 import { Suspense } from 'react';
 
-export const Layout = () => {
+export const Layout = ({changeTheme}) => {
   return (
     <div>
-      <AppBar />
+      <AppBar changeTheme={changeTheme}/>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

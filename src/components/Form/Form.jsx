@@ -10,8 +10,7 @@ import { getContacts } from 'redux/contacts/selectors';
 
 const Form = () => {
   const dispatch = useDispatch();
-  const  items = useSelector(getContacts);
-  console.log(items)
+  const items = useSelector(getContacts);
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputValue = e.target.name.value;

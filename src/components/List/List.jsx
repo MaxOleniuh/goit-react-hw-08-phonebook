@@ -2,10 +2,11 @@ import { UlStyled, ButtonStyled, LiStyled } from './List.styled';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
-const List = ({contacts}) => {
+const List = ({ contacts }) => {
   const dispatch = useDispatch();
   return (
-    <UlStyled>
+    <>
+      <UlStyled>
        {contacts.map(({ id, number, name }) => (
         <LiStyled key={id}>
           {name}: {number}
@@ -13,6 +14,8 @@ const List = ({contacts}) => {
         </LiStyled>
       ))}
     </UlStyled>
+      </>
+    
   );
 };
 
