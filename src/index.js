@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         theme={{ colorScheme: 'dark' }}
       >
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter basename="goit-react-hw-08-phonebook">
+          <BrowserRouter basename="/goit-react-hw-08-phonebook">
             <App />
           </BrowserRouter>
         </PersistGate>
@@ -25,4 +25,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 );
-// basename = 'goit-react-hw-08-phonebook'
