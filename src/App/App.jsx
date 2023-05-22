@@ -1,7 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/contacts/operations';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from 'pages/Home';
 import { MyGlobalStyles } from 'Global.Styled';
 import { SimpleGrid } from '@mantine/core';
@@ -11,15 +8,18 @@ import Register from 'pages/Register';
 import MainLayout from 'pages/MainLayout.jsx/MainLayout';
 import { RestrictedRoute } from 'RestrictedRoute';
 import { PrivateRoute } from 'PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/authOperations';
+import { useAuth } from 'hooks';
 
 export const App = () => {
+  const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
-
   useEffect(() => {
-      dispatch(fetchContacts());
-  }, [dispatch]);
-
-  return (
+    dispatch(refreshUser())
+  }, [dispatch])
+  return isRefreshing ? <b>Loading...</b> : (
     <>
       <MyGlobalStyles />
       <SimpleGrid cols={1} spacing="lg">
@@ -53,9 +53,11 @@ export const App = () => {
                     />
                   }
                 />
-            </Route>
+          </Route>
+          <Route path='*' element={<Navigate to='/' />} />
         </Routes>
-       </SimpleGrid>
+      </SimpleGrid>
+      
       </>
     );
   }

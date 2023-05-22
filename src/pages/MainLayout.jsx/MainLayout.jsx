@@ -4,12 +4,20 @@ import List from '../../components/List/List';
 import Filter from '../../components/Filter/Filter';
 import { SimpleGrid, Text, Title } from '@mantine/core';
 import PhonebookWrapper from './MainLayout.styled';
-import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/contacts/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts, getIsLoading } from 'redux/contacts/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import { useEffect } from 'react';
 const MainLayout = () => {
-    const { items, isLoading } = useSelector(getContacts);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+  const items = useSelector(getContacts);
+  const { isLoading } = useSelector(getIsLoading);
     const filter = useSelector(state => state.filter);
-    const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+  const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+  
     return (
          <PhonebookWrapper>
         <SimpleGrid cols={1} spacing="md">

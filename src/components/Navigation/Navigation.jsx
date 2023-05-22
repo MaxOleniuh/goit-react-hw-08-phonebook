@@ -1,10 +1,9 @@
 import { Navbar, Text } from '@mantine/core';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { selectIsLoggedIn } from 'redux/auth/selectorsAuth';
-
+import { useAuth } from 'hooks';
 export const Navigation = () => {
-  const loggedIn = (useSelector(selectIsLoggedIn));
+  // const loggedIn = (useSelector(selectIsLoggedIn));
+  const { isLoggedIn } = useAuth();
 
   return (
     <Navbar
@@ -20,7 +19,7 @@ export const Navigation = () => {
       <Text component={NavLink} variant="link" to="/" fz="xl" fw={700}>
         Home
       </Text>
-      {loggedIn && (
+      {isLoggedIn && (
         <Text component={NavLink} variant="link" to="contacts" fz="xl" fw={700}>
           Contacts
         </Text>
