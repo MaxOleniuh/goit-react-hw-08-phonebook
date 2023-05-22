@@ -13,7 +13,7 @@ const MainLayout = () => {
     return (
          <PhonebookWrapper>
         <SimpleGrid cols={1} spacing="md">
-          {/* {isLoading && <Loader />} */}
+          {isLoading && <Loader />}
           <Title fw={900} fz={62}>Phonebook</Title>
           <Form />
           <Title fw={700} fz={42}>Contacts</Title>
