@@ -18,10 +18,11 @@ const MainLayout = () => {
     const filter = useSelector(state => state.filter);
   const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   
-    return (
-         <PhonebookWrapper>
+  return (
+    <>
+        {isLoading && <Loader />}
+        <PhonebookWrapper>
         <SimpleGrid cols={1} spacing="md">
-          {isLoading && <Loader />}
           <Title fw={900} fz={62}>Phonebook</Title>
           <Form />
           <Title fw={700} fz={42}>Contacts</Title>
@@ -32,6 +33,8 @@ const MainLayout = () => {
           <List contacts={filteredContacts()} />
         </SimpleGrid> 
       </PhonebookWrapper>
+      </>
+      
     )
 }
 export default MainLayout;

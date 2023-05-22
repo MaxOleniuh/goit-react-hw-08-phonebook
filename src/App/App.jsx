@@ -4,6 +4,7 @@ import { MyGlobalStyles } from 'Global.Styled';
 import { SimpleGrid } from '@mantine/core';
 import { Layout } from 'components/Layout/Layout';
 import Login from 'pages/Login';
+import Loader from '../components/Loader/Loader';
 import Register from 'pages/Register';
 import MainLayout from 'pages/MainLayout.jsx/MainLayout';
 import { RestrictedRoute } from 'RestrictedRoute';
@@ -19,7 +20,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(refreshUser())
   }, [dispatch])
-  return isRefreshing ? <b>Loading...</b> : (
+  return isRefreshing ? <Loader/> : (
     <>
       <MyGlobalStyles />
       <SimpleGrid cols={1} spacing="lg">
