@@ -1,7 +1,7 @@
 import { UlStyled, ButtonStyled, LiStyled } from './List.styled';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 const List = ({contacts}) => {
   const dispatch = useDispatch();
   return (
@@ -20,4 +20,4 @@ List.propTypes = {
   contacts: PropTypes.array.isRequired,
 };
 
-    export default List;
+export default List;

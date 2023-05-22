@@ -1,37 +1,44 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import Loader from '../components/Loader/Loader';
-import Form from '../components/Form/Form';
-import List from '../components/List/List';
-import Filter from '../components/Filter/Filter';
-import { SimpleGrid, Text, Title } from '@mantine/core';
-import AppStyled from './App.styled';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchContacts } from 'redux/contacts/operations';
+import { Routes, Route } from 'react-router-dom';
+import MainLayout from 'components/MainLayout.jsx/MainLayout';
+import Home from 'Home/Home';
+import { MyGlobalStyles } from 'Global.Styled';
+import { MantineProvider, SimpleGrid } from '@mantine/core';
+import { Layout } from 'Layout';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.filter);
-  const { items, isLoading } = useSelector(getContacts);
-  
+  const [isAuth] = useState(false);
+  const [colorScheme, setColorScheme] = useState('dark');
+
   useEffect(() => {
       dispatch(fetchContacts());
   }, [dispatch]);
 
-  const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-    return (
-      <AppStyled>
-        <SimpleGrid cols={1} spacing="md">
-        {isLoading && <Loader />}
-        <Title fw={900} fz={62}>Phonebook</Title>
-        <Form />
-        <Title fw={700} fz={42}>Contacts</Title>
-        {items.length > 1 && <Text fw={700}>There are {items.length} contacts in the Phonebook.</Text>}
-        {items.length === 1 && <Text fw={700}>There is 1 contact in the Phonebook.</Text>}
-        {items.length === 0 && <Text fw={700}>There are no contacts in the Phonebook.</Text>}
-        <Filter />
-          <List contacts={filteredContacts()} />
-           </SimpleGrid>
-      </AppStyled>
+    const changeTheme = () => {
+      colorScheme === 'dark' ? setColorScheme('light') : setColorScheme('dark');
+      console.log(colorScheme)
+  };
+
+  return (
+    <>
+      <MantineProvider
+        withNormalizeCSS
+        withGlobalStyles
+        theme={{ colorScheme: colorScheme }}
+      />
+      <MyGlobalStyles />
+      <SimpleGrid cols={1} spacing="lg">
+         {isAuth ? <Routes>
+        <Route path='/phonebook' element={<MainLayout />} />
+      </Routes> :
+          <Routes>
+             <Route path="/" element={<Layout />} />
+              <Route index element={<Home />} />
+        </Routes>}
+       </SimpleGrid>
+      </>
     );
   }

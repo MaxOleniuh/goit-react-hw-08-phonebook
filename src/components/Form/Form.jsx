@@ -6,9 +6,9 @@ import {
   InputStyled,
 } from './Form.styled';
 import { useState } from 'react';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/selectors';
 const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');

@@ -2,24 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from 'App/App';
 import { Provider } from 'react-redux';
-import { persistor, store } from './redux/store';
+import { store, persistor } from './redux/store';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import { MantineProvider } from '@mantine/core';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <MantineProvider
-          withNormalizeCSS
-          withGlobalStyles
-          theme={{ colorScheme: 'dark' }}
-        >
-          {' '}
+        <BrowserRouter basename="/">
           <App />
-        </MantineProvider>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
 );
+// basename = 'goit-react-hw-08-phonebook'
