@@ -21,12 +21,12 @@ export const LoginForm = () => {
   return (
     <>
       <Title order={1}>LogIn Form</Title>
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <form onSubmit={handleSubmit} autoComplete="on">
         <label>
           Email
           <Input
             icon={<IconAt />}
-            placeholder="Your Name"
+            placeholder="Your Email"
             type="email"
             name="email"
           />

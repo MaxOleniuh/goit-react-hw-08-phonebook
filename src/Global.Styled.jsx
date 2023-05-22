@@ -9,6 +9,7 @@ export const MyGlobalStyles = () => {
         },
 
         body: {
+          padding: '0 300px',
           ...theme.fn.fontStyles(),
           backgroundColor:
             theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,

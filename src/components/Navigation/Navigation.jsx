@@ -20,7 +20,7 @@ export const Navigation = () => {
         Home
       </Text>
       {loggedIn && (
-        <Text component={NavLink} variant="link" to="phonebook" fz="xl" fw={700}>
+        <Text component={NavLink} variant="link" to="contacts" fz="xl" fw={700}>
           Contacts
         </Text>
       )}
