@@ -20,7 +20,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <Title order={1}>LogIn Form</Title>
+      <Title order={1}>Log In Form</Title>
       <form onSubmit={handleSubmit} autoComplete="on">
         <label>
           Email
@@ -40,7 +40,7 @@ export const LoginForm = () => {
             name="password"
           />
         </label>
-        <Button type="submit" sx={{ marginTop: '12px' }}>
+        <Button type="submit" sx={{ marginTop: '12px' }} variant="gradient" gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}>
           Log In
         </Button>
       </form>
